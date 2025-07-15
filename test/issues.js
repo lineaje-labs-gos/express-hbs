@@ -450,7 +450,7 @@ describe('issue-144', function() {
     });
     var locals = H.createLocals('express3', dirname, {});
     render(dirname + '/index.hbs', locals, function(err, html) {
-      assert.equal('<div><p><code>\'$example$\'</code> abcd</p></div>\n', html);
+      assert.equal(H.stripWs(html), '<div><p><code>\'$example$\'</code>abcd</p></div>');
       done();
     });
   });

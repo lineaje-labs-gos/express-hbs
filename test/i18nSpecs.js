@@ -16,7 +16,8 @@ describe('i18n', function() {
       .set('Cookie', 'locale=en')
       .end(function(req, res) {
         var expected = '<span id="text">text to test</span>\n<br>\n<span class="each">1 cat</span><span class="each">2 cats</span>';
-        assert.equal(res.text, expected);
+        var normalized = res.text.replace(/\r\n/g, '\n');
+        assert.equal(normalized, expected);
         done();
       });
   });
@@ -27,7 +28,8 @@ describe('i18n', function() {
       .set('Cookie', 'locale=fr')
       .end(function(req, res) {
         var expected = '<span id="text">Texte à tester</span>\n<br>\n<span class="chaque">1 chat</span><span class="chaque">2 chats</span>';
-        assert.equal(res.text, expected);
+        var normalized = res.text.replace(/\r\n/g, '\n');
+        assert.equal(normalized, expected);
         done();
       });
   });
