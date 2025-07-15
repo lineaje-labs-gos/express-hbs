@@ -1,6 +1,6 @@
 {
   "name": "express-hbs",
-  "version": "2.5.0",
+  "version": "2.5.0-lineaje-01",
   "description": "Express handlebars template engine complete with multiple layouts, partials and blocks.",
   "keywords": [
     "express4",
@@ -23,10 +23,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/TryGhost/express-hbs"
+    "url": "https://github.com/lineaje-labs-gos/express-hbs"
   },
-  "bugs": "https://github.com/TryGhost/express-hbs/issues",
+  "bugs": "https://github.com/lineaje-labs-gos/express-hbs/issues",
   "author": "Mario Gutierrez <mario@barc.com>",
+  "contributors": [
+    { "name": "Abhisek Sanyal",
+      "email": "10907245+abhiseksanyal@users.noreply.github.com"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "cookie-parser": "1.4.6",
