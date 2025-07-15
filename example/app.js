@@ -16,6 +16,7 @@ function create(hbs, env) {
   var viewsDir = relative('views');
 
   app.use(express.static(relative('public')));
+  app.use(express.json());
 
   // Hook in express-hbs and tell it where known directories reside
   app.engine('hbs', hbs.express4({
@@ -94,6 +95,38 @@ function create(hbs, env) {
     res.render('veggies/details', {
       veggie: req.params.name,
       layout: 'layout/veggie-details'
+    });
+  });
+
+  app.get('/secure-but-missing-layout', function (req, res) {
+    res.render('index', {
+      layout: 'testlayout/subtestlayout/sub2' // valid path, file missing
+    });
+  });
+
+  app.get('/unsafe-layout-traversal-query', function (req, res) {
+    res.render('index', {...req.query});
+  });
+
+  app.post('/unsafe-layout-traversal-body', function (req, res) {
+    res.render('index', {...req.body});
+  });
+
+  app.get('/deep-nested-layout', function (req, res) {
+    res.render('index', {
+      layout: 'layout/nested/deep' // make sure this file exists in views/layout/nested/deep.hbs
+    });
+  });
+
+  app.get('/layout-fs-error', function (req, res) {
+    res.render('index', {
+      layout: 'layout/fs-error' // statSync will be mocked to throw error
+    });
+  });
+
+  app.get('/invalid-layout', function (req, res) {
+    res.render('index', {
+      layout: 'layout/invalid-layout' // this file should not exist
     });
   });
 
