@@ -37,7 +37,8 @@ function createApp(env) {
     },
     existsSync: function(filename, encoding) {
       return fs.existsSync(filename, encoding);
-    }
+    },
+    statSync: fs.statSync
   });
 
   // used mocked hbs in example
