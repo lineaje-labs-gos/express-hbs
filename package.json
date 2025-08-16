@@ -50,5 +50,11 @@
   },
   "optionalDependencies": {
     "js-beautify": "^1.13.11"
+  },
+  "overrides": {
+    "cross-spawn": "7.0.6"
+  },
+  "resolutions": {
+    "cross-spawn": "7.0.6"
   }
 }
